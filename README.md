@@ -1,6 +1,6 @@
 ### Diploma-Thesis
 # ClusterNet
-An augmented version of the Pyramid Scene Parsing Network (PSPNet, Zhao et. al 2017) featuring a spectral clustering layer.
+An augmented version of the Pyramid Scene Parsing Network (PSPNet, Zhao et. al) featuring a spectral clustering layer.
 
  Spectral clustering is used on the feature maps, right after the ResNet forward pass, to reduce feature space redundancy.
  The spectral clustering algorithm used is as described in Ng, Jordan and Weiss' work "On Spectral Clustering: Analysis and an algorithm" for NIPS 2001.
@@ -16,6 +16,7 @@ An augmented version of the Pyramid Scene Parsing Network (PSPNet, Zhao et. al 2
                                                             PyTorch = 1.11.0
                                                             NumPy = 1.22.3
                                                             OpenCV = 4.5.2
+                                                            SciPy = 1.7.3
  
 The training architecture is depected in the modified image bellow. Credit for the initial image goes to Zhao et. al, "Pyramid Scene Parsing Network" for CVPR 2017 
 
