@@ -1,5 +1,5 @@
-### Diploma-Thesis
-# ClusterNet
+# Diploma-Thesis
+### ClusterNet
 An augmented version of the Pyramid Scene Parsing Network (PSPNet, Zhao et. al) featuring a spectral clustering layer.
 
  Spectral clustering is used on the feature maps, right after the ResNet forward pass, to reduce feature space redundancy.
