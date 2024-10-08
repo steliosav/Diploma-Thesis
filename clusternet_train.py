@@ -22,7 +22,7 @@ train_dataloader = DataLoader(dataset_train, batch_size=1, shuffle=False, num_wo
 criterion = nn.CrossEntropyLoss(ignore_index=255)
 
 # Model
-model = PSPNet(layers=50, bins=(2, 3, 6, 8), dropout=0.1, classes=35, zoom_factor=8, use_ppm=True, pretrained=True, criterion=criterion).to(device)
+model = ClusterNet(layers=50, bins=(2, 3, 6, 8), dropout=0.1, classes=35, zoom_factor=8, use_ppm=True, pretrained=True, criterion=criterion).to(device)
 
 # Optimizer and list of parameters to optimize
 modules_ori = [model.layer0, model.layer1, model.layer2, model.layer3, model.layer4]

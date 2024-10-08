@@ -1,11 +1,14 @@
 import torch
 from torch import nn
 import torch.nn.functional as F
-import math
-import os
 
 from models.resnet import resnet50
 import utils.clustering as clustering
+
+# """
+# IMPORTANT: Below is an implementation of the network architecture from Pyramid Scene Parsing Network (PSPNet, Zhao et. al 2017)
+# It has been modified to include a clustering module inside the forward pass. All credit where it is due.
+# """
 
 class PPM(nn.Module):
     def __init__(self, in_dim, reduction_dim, bins):
@@ -29,10 +32,9 @@ class PPM(nn.Module):
             out.append(F.interpolate(f(x), x_size[2:], mode='bilinear', align_corners=True))
         return torch.cat(out, 1)
 
-
-class PSPNet(nn.Module):
+class ClusterNet(nn.Module):
     def __init__(self, layers=50, bins=(1, 2, 3, 6), dropout=0.1, classes=2, zoom_factor=8, use_ppm=False, criterion=nn.CrossEntropyLoss(ignore_index=255), pretrained=True):
-        super(PSPNet, self).__init__()
+        super(ClusterNet, self).__init__()
         assert 2048 % len(bins) == 0
         assert classes > 1
         assert zoom_factor in [1, 2, 4, 8]
@@ -89,10 +91,8 @@ class PSPNet(nn.Module):
         x_tmp = self.layer3(x)
         x = self.layer4(x_tmp)
         x = self.bnrm(x)
-        # breakpoint()
         x = clustering.spectral_clustering_torch(x)
         x = self.bnrm2(x)
-        torch.cuda.empty_cache()
         if self.use_ppm:
             x = self.ppm(x)
         x = self.cls(x)

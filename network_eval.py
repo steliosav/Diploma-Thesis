@@ -1,11 +1,11 @@
 import numpy as np
-from clusternet import *
+from models.clusternet import *
 import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
 from utils.cityscapes_dataset import Cityscapes
 
-from utils.IoU_paper import AverageMeter, intersectionAndUnion, intersectionAndUnionGPU
+from utils.IoU import AverageMeter, intersectionAndUnion, intersectionAndUnionGPU
 import logging
 
 # Set device
@@ -35,7 +35,7 @@ def get_logger():
 
 # Load Model
 with torch.no_grad():
-    model = PSPNet(layers=50, bins=(2, 3, 6, 8), dropout=0.1, classes=35, zoom_factor=8, use_ppm=False, pretrained=True, criterion=criterion).to(device)
+    model = ClusterNet(layers=50, bins=(2, 3, 6, 8), dropout=0.1, classes=35, zoom_factor=8, use_ppm=False, pretrained=True, criterion=criterion).to(device)
     model_path = '30-10-2022, 13:09:40/clusternet.pth'
     model.load_state_dict(torch.load(model_path), strict=False)
     model.eval() #SET MODEL TO EVAL MODE (FIXED PARAMETERS)
