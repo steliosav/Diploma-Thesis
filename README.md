@@ -27,13 +27,20 @@ An augmented version of the Pyramid Scene Parsing Network (PSPNet, Zhao et. al) 
  Go to https://www.cityscapes-dataset.com/, download **leftImg8bit_trainvaltest.zip** and **gtFine_trainvaltest.zip**, unzip them and
  place the **leftImg8bit** and **gtFine** directories inside the **cityscapes_dataset** directory such that the resulting path complies with the data lists in **train_set.txt** and **val_set.txt**
  
+### Model
 The modified training architecture, including the clustering layer, is depected in the image bellow. 
 Credit for the initial image goes to Zhao et. al, "Pyramid Scene Parsing Network" for CVPR 2017 
 
-![test](/assets/clusternet_arch.png)
+![clusternet_arch](/assets/clusternet_arch.png)
 
+A sample ground truth segmentation coupled with the model predictions after training
+
+![sample_result](/assets/pretrained_clustering_concat_feat_40clusters.png)
 
 ### Notes
+#### Credits
+This implementation includes code segments provided within the scope of the Computer Vision & Graphics class of CEID University of Patras,
+which are used for preprocessing and loading image datasets. (cityscapes_dataset.py, transform.py)
 
 IMPORTANT: Code functionality has been tested for versions:
 
