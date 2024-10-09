@@ -9,7 +9,7 @@ warnings.filterwarnings("ignore", category=DeprecationWarning)
 """
 Implementation of Spectral and Kmeans clustering for use on ResNet50's feature maps.
 Clustering of feature maps is used to reduce feature space redundancy. 
-Each feature map group will be represented by a single feature map in the output.
+Each feature map cluster will be represented by a single feature map in the output.
 """
 
 def spectral_clustering_torch_2048(x): # feature map size specifically for ResNet50
