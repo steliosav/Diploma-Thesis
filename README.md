@@ -40,7 +40,7 @@ A sample ground truth segmentation coupled with the model predictions after trai
 ### Notes
 #### Credits
 This implementation includes code segments provided within the scope of the Computer Vision & Graphics class of CEID University of Patras,
-which are used for preprocessing and loading image datasets. (cityscapes_dataset.py, transform.py)
+which are used for preprocessing and loading image datasets.
 
 IMPORTANT: Code functionality has been tested for versions:
 
