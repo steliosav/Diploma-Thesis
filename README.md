@@ -20,9 +20,6 @@ An augmented version of the Pyramid Scene Parsing Network (PSPNet, Zhao et. al) 
  Spectral clustering is used on the feature maps, right after the ResNet forward pass, to reduce feature space redundancy.
  The spectral clustering algorithm used is as described in Ng, Jordan and Weiss' work "On Spectral Clustering: Analysis and an algorithm" for NIPS 2001.
 
- Credit also goes to Torchcluster (https://pypi.org/project/torchcluster/) and Zhang Zhi for providing the framework for PyTorch supported clustering algorithms.
- Use **pip install torchcluster** (**conda install -c tczhangzhi torchcluster** for anaconda users) before running the code in this repository.
-
  The network can be retrained, including the added clustering layer, on the Cityscapes dataset.
  Go to https://www.cityscapes-dataset.com/, download **leftImg8bit_trainvaltest.zip** and **gtFine_trainvaltest.zip**, unzip them and
  place the **leftImg8bit** and **gtFine** directories inside the **cityscapes_dataset** directory such that the resulting path complies with the data lists in **train_set.txt** and **val_set.txt**
@@ -41,6 +38,9 @@ A sample ground truth segmentation coupled with the model predictions after trai
 #### Credits
 This implementation includes code segments provided within the scope of the Computer Vision & Graphics class of CEID University of Patras,
 which are used for preprocessing and loading image datasets.
+
+Credit also goes to Torchcluster (https://pypi.org/project/torchcluster/) and Zhang Zhi for providing the framework for PyTorch supported clustering algorithms.
+Use **pip install torchcluster** (**conda install -c tczhangzhi torchcluster** for anaconda users) before running the code in this repository.
 
 IMPORTANT: Code functionality has been tested for versions:
 
