@@ -13,7 +13,7 @@ device = torch.device('cuda' if torch.cuda.is_available else 'cpu')
 # Dataset
 dataset_train = Cityscapes(split='train',
                            data_root='cityscapes_dataset/',
-                           data_list='cityscapes_dataset/list/cityscapes//train_set.txt')
+                           data_list='cityscapes_dataset/lists/cityscapes/train_set.txt')
 
 # Dataloader
 train_dataloader = DataLoader(dataset_train, batch_size=1, shuffle=False, num_workers=0)

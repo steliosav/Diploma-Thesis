@@ -7,6 +7,10 @@ from utils.distance import setwise_distance
 import warnings
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
+"""
+Credit to Torchcluster and Zhang Zhi, https://pypi.org/project/torchcluster/
+"""
+
 class SpectrumClustering(Cluster):
     """Spectrum clustering algorithm.
     """

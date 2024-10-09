@@ -14,7 +14,7 @@ device = torch.device('cuda' if torch.cuda.is_available else 'cpu')
 # Dataset
 dataset_test = Cityscapes(split='test',
                            data_root='cityscapes_dataset',
-                           data_list='cityscapes_dataset/list/cityscapes//val_set.txt')
+                           data_list='cityscapes_dataset/lists/cityscapes//val_set.txt')
 
 # Dataloader
 test_dataloader = DataLoader(dataset_test, batch_size=1, shuffle=False, num_workers=0)
@@ -35,9 +35,9 @@ def get_logger():
 
 # Load Model
 with torch.no_grad():
-    model = ClusterNet(layers=50, bins=(2, 3, 6, 8), dropout=0.1, classes=35, zoom_factor=8, use_ppm=False, pretrained=True, criterion=criterion).to(device)
-    model_path = '30-10-2022, 13:09:40/clusternet.pth'
-    model.load_state_dict(torch.load(model_path), strict=False)
+    model = ClusterNet(layers=50, bins=(2, 3, 6, 8), dropout=0.1, classes=35, zoom_factor=8, use_ppm=True, pretrained=True, criterion=criterion).to(device)
+    # model_path = '' # Insert trained network parameters
+    # model.load_state_dict(torch.load(model_path), strict=False)
     model.eval() #SET MODEL TO EVAL MODE (FIXED PARAMETERS)
 
     if __name__ == '__main__':
@@ -71,7 +71,6 @@ with torch.no_grad():
                 pred[x, :, :] = pred_seg
             
             pred = torch.sum(pred, 0)
-
             label = label.to("cuda")
             label = label.squeeze(0)
 
